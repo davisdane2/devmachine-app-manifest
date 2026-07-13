@@ -15,12 +15,17 @@ Entry handling by manager:
   script / manual -> never run automatically; printed with their notes
 """
 
+import functools
 import json
 import re
 import subprocess
 import sys
 import urllib.request
 from pathlib import Path
+
+# Subprocess output (apt, sudo prompts) goes straight to the tty while our own
+# stdout is block-buffered when piped — flush so headers print before the work.
+print = functools.partial(print, flush=True)
 
 MANIFEST_URL = "https://raw.githubusercontent.com/davisdane2/devmachine-app-manifest/main/daneappmanifest-linux.json"
 DOWNLOADS = Path.home() / "Downloads"

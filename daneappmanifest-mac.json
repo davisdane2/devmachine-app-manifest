@@ -14,7 +14,22 @@
       "url": "https://brew.sh",
       "recommendedKeep": true,
       "notes": "Prerequisite for everything else. Installer is interactive (asks for sudo), so run it in a terminal — not from this app.",
-      "detect": false
+      "detect": false,
+      "detectCommand": "command -v brew"
+    },
+    {
+      "id": "mas",
+      "name": "Mas-CLI",
+      "category": "System & Runtime",
+      "manager": "brew",
+      "packageId": "mas",
+      "source": "formula",
+      "installScript": "brew install mas",
+      "url": null,
+      "recommendedKeep": true,
+      "notes": "Installs Mac App Store apps from the command line. Prerequisite for every App Store entry below — install this first.",
+      "detect": false,
+      "detectCommand": "command -v mas"
     },
     {
       "id": "xcode-command-line-tools",
@@ -23,38 +38,73 @@
       "manager": "apple",
       "packageId": "xcode-select",
       "source": "apple",
-      "installScript": "xcode-select -p >/dev/null 2>&1 || xcode-select --install",
+      "installScript": null,
       "url": null,
       "recommendedKeep": true,
-      "notes": "Clang/make/git toolchain. Equivalent of Visual Studio BuildTools on Windows.",
-      "detect": false
+      "notes": "Clang/make/git toolchain. Must be installed manually — run `xcode-select --install`, or via macOS Software Update. Detected here, but not installed by this app.",
+      "detect": false,
+      "detectCommand": "xcode-select -p"
     },
     {
       "id": "xcode",
       "name": "Xcode",
       "category": "Dev Tools",
-      "manager": "appstore",
+      "manager": "mas",
       "packageId": "497799835",
-      "source": "mas",
+      "source": "appstore",
       "installScript": null,
       "url": "https://apps.apple.com/us/app/xcode/id497799835",
       "recommendedKeep": true,
-      "notes": "Mac App Store only. Install 'mas' first if you want it scripted: mas install 497799835"
+      "notes": "Must be installed manually through the App Store / macOS Software Update. Detected here, but not installed by this app."
     },
     {
-      "id": "mas",
-      "name": "mas",
-      "category": "System & Runtime",
-      "manager": "brew",
-      "packageId": "mas",
-      "source": "formula",
-      "installScript": "brew install mas",
-      "url": null,
+      "id": "testflight",
+      "name": "TestFlight",
+      "category": "Dev Tools",
+      "manager": "mas",
+      "packageId": "899247664",
+      "source": "appstore",
+      "installScript": "mas install 899247664",
+      "url": "https://apps.apple.com/us/app/testflight/id899247664",
       "recommendedKeep": true,
-      "notes": "Mac App Store CLI — lets you script App Store installs like Xcode.",
-      "detect": false
+      "notes": "Mac App Store. Needs 'mas' installed and the App Store signed in."
     },
-
+    {
+      "id": "garageband",
+      "name": "GarageBand",
+      "category": "Media & Graphics",
+      "manager": "mas",
+      "packageId": "682658836",
+      "source": "appstore",
+      "installScript": "mas install 682658836",
+      "url": "https://apps.apple.com/us/app/garageband/id682658836",
+      "recommendedKeep": true,
+      "notes": "Mac App Store. Needs 'mas' installed and the App Store signed in."
+    },
+    {
+      "id": "microsoft-excel",
+      "name": "Microsoft Excel",
+      "category": "Utilities",
+      "manager": "mas",
+      "packageId": "462058435",
+      "source": "appstore",
+      "installScript": "mas install 462058435",
+      "url": "https://apps.apple.com/us/app/microsoft-excel/id462058435",
+      "recommendedKeep": true,
+      "notes": "Mac App Store. Needs 'mas' installed and the App Store signed in."
+    },
+    {
+      "id": "hello-kitty",
+      "name": "Hello Kitty",
+      "category": "Games",
+      "manager": "mas",
+      "packageId": "1553505132",
+      "source": "appstore",
+      "installScript": "mas install 1553505132",
+      "url": "https://apps.apple.com/us/app/id1553505132",
+      "recommendedKeep": false,
+      "notes": "Mac App Store. Needs 'mas' installed and the App Store signed in."
+    },
     {
       "id": "visual-studio-code",
       "name": "Visual Studio Code",
@@ -111,42 +161,6 @@
       "packageId": "webstorm",
       "source": "cask",
       "installScript": "brew install --cask webstorm",
-      "url": null,
-      "recommendedKeep": true,
-      "notes": ""
-    },
-    {
-      "id": "iterm2",
-      "name": "iTerm",
-      "category": "Dev Tools",
-      "manager": "brew",
-      "packageId": "iterm2",
-      "source": "cask",
-      "installScript": "brew install --cask iterm2",
-      "url": null,
-      "recommendedKeep": true,
-      "notes": "Windows Terminal equivalent."
-    },
-    {
-      "id": "docker-desktop",
-      "name": "Docker Desktop",
-      "category": "Dev Tools",
-      "manager": "brew",
-      "packageId": "docker-desktop",
-      "source": "cask",
-      "installScript": "brew install --cask docker-desktop",
-      "url": null,
-      "recommendedKeep": true,
-      "notes": "Cask was renamed from 'docker' to 'docker-desktop'."
-    },
-    {
-      "id": "unity-hub",
-      "name": "Unity Hub",
-      "category": "Dev Tools",
-      "manager": "brew",
-      "packageId": "unity-hub",
-      "source": "cask",
-      "installScript": "brew install --cask unity-hub",
       "url": null,
       "recommendedKeep": true,
       "notes": ""
@@ -264,19 +278,7 @@
       "installScript": "brew install python",
       "url": null,
       "recommendedKeep": true,
-      "notes": "Latest python3 formula."
-    },
-    {
-      "id": "cmake",
-      "name": "cmake",
-      "category": "Dev Tools",
-      "manager": "brew",
-      "packageId": "cmake",
-      "source": "formula",
-      "installScript": "brew install cmake",
-      "url": null,
-      "recommendedKeep": true,
-      "notes": "",
+      "notes": "Latest python3 formula.",
       "detect": false
     },
     {
@@ -331,32 +333,6 @@
       "notes": "Deploy to a physical iPhone from the CLI.",
       "detect": false
     },
-    {
-      "id": "claude",
-      "name": "Claude",
-      "category": "Dev Tools",
-      "manager": "brew",
-      "packageId": "claude",
-      "source": "cask",
-      "installScript": "brew install --cask claude",
-      "url": null,
-      "recommendedKeep": true,
-      "notes": ""
-    },
-
-    {
-      "id": "google-chrome",
-      "name": "Google Chrome",
-      "category": "Browsers",
-      "manager": "brew",
-      "packageId": "google-chrome",
-      "source": "cask",
-      "installScript": "brew install --cask google-chrome",
-      "url": null,
-      "recommendedKeep": true,
-      "notes": ""
-    },
-
     {
       "id": "figma",
       "name": "Figma",
@@ -430,7 +406,6 @@
       "notes": "",
       "detect": false
     },
-
     {
       "id": "raycast",
       "name": "Raycast",
@@ -442,18 +417,6 @@
       "url": null,
       "recommendedKeep": true,
       "notes": "Covers what Everything + PowerToys Run do on Windows."
-    },
-    {
-      "id": "rectangle",
-      "name": "Rectangle",
-      "category": "Utilities",
-      "manager": "brew",
-      "packageId": "rectangle",
-      "source": "cask",
-      "installScript": "brew install --cask rectangle",
-      "url": null,
-      "recommendedKeep": true,
-      "notes": "Window snapping — PowerToys FancyZones equivalent."
     },
     {
       "id": "keka",
@@ -504,18 +467,6 @@
       "notes": ""
     },
     {
-      "id": "postman",
-      "name": "Postman",
-      "category": "Utilities",
-      "manager": "brew",
-      "packageId": "postman",
-      "source": "cask",
-      "installScript": "brew install --cask postman",
-      "url": null,
-      "recommendedKeep": true,
-      "notes": ""
-    },
-    {
       "id": "localsend",
       "name": "LocalSend",
       "category": "Utilities",
@@ -551,7 +502,6 @@
       "recommendedKeep": true,
       "notes": ""
     },
-
     {
       "id": "parsec",
       "name": "Parsec",
@@ -564,20 +514,6 @@
       "recommendedKeep": true,
       "notes": ""
     },
-    {
-      "id": "chrome-remote-desktop-host",
-      "name": "Chrome Remote Desktop Host",
-      "category": "Remote Desktop",
-      "manager": "brew",
-      "packageId": "chrome-remote-desktop-host",
-      "source": "cask",
-      "installScript": "brew install --cask chrome-remote-desktop-host",
-      "url": null,
-      "recommendedKeep": true,
-      "notes": "Installs a background host, not an .app — won't be auto-detected.",
-      "detect": false
-    },
-
     {
       "id": "roblox",
       "name": "Roblox",

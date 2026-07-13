@@ -387,6 +387,21 @@
       "notes": ""
     },
     {
+      "id": "file-commander",
+      "name": "File Commander",
+      "category": "Utilities",
+      "manager": "github",
+      "packageId": "VioletGiraffe/file-commander",
+      "source": "github-release",
+      "installScript": null,
+      "githubRepo": "VioletGiraffe/file-commander",
+      "assetPattern": "FileCommander*.exe",
+      "downloadUrl": "https://github.com/VioletGiraffe/file-commander/releases/download/0.9.9.7/FileCommander.exe",
+      "url": "https://github.com/VioletGiraffe/file-commander/releases",
+      "recommendedKeep": false,
+      "notes": "Latest GitHub release, downloaded into ~/Downloads and launched — finish the installer window it opens. downloadUrl is the pinned fallback if the API is rate-limited."
+    },
+    {
       "id": "7zip",
       "name": "7zip",
       "category": "Utilities",
